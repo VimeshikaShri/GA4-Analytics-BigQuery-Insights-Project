@@ -6,8 +6,6 @@
 
 This repository documents an end-to-end web analytics implementation I built and ran on **GoDebug**, a web app I deployed on Replit. It covers everything from instrumenting the app with GA4, to configuring the BigQuery export, to querying the raw event data and turning it into product decisions.
 
-I am publishing it as a working sample of the kind of analysis, debugging, and cross-functional communication expected in a **[Product Solution Engineer, Apps – gTech Ads Customer Experience](https://www.google.com/about/careers/applications/u/0/jobs/results/91302025064522438-product-solution-engineer-apps-gtech-ads-customer-experience-lcs)** role: reading product telemetry, spotting where tagging or funnels are broken, and translating data into a clear action plan.
-
 ---
 
 ## Table of contents
@@ -26,7 +24,7 @@ I am publishing it as a working sample of the kind of analysis, debugging, and c
 
 ## Why this project
 
-A big part of a Product Solutions Engineer's job is turning raw product/ads telemetry into a diagnosis: *is this a tagging bug, a funnel problem, or a genuine product issue — and what's the fix?* I wanted a small, real, end-to-end example of doing that rather than just a resume bullet, so I:
+A big part of a Solutions Engineer's job is turning raw product/ads telemetry into a diagnosis: *is this a tagging bug, a funnel problem, or a genuine product issue, and what's the fix?* I wanted a small, real, end-to-end example of doing that rather than just a resume bullet, so I:
 
 - Shipped a real web app (**GoDebug**) to Replit.
 - Instrumented it with **GA4** (Google's current analytics platform, the same measurement stack that underpins Google Ads conversion tracking).
@@ -56,10 +54,10 @@ Insights → README (this doc)
 Added the Google tag (`gtag.js`) snippet to GoDebug's pages and connected it to a new GA4 **Web** data stream so page views, scrolls, and app events (`signup`, `form_start`, `user_engagement`, etc.) started flowing in.
 
 **2. Validate the tag with DebugView**
-Before trusting any report, I used GA4's **DebugView** to confirm events were firing correctly and with the right parameters — the same first step I'd take when troubleshooting a customer's tagging issue: confirm the data is even arriving before analyzing it.
+Before trusting any report, I used GA4's **DebugView** to confirm events were firing correctly and with the right parameters, the same first step I take when troubleshooting a customer's tagging issue: confirm the data is even arriving before analyzing it.
 
 **3. Build out the reporting hub**
-Inside [Reports Snapshot](https://analytics.google.com/analytics/web/#/a402431492p547243036/reports/reportinghub), I worked through GA4's standard report collections — **Acquisition, Engagement, Retention, Demographics, Tech, and Life Cycle (Generate leads)** — to get a full picture of who's visiting, where from, on what device, and what they do once they land.
+Inside [Reports Snapshot](https://analytics.google.com/analytics/web/#/a402431492p547243036/reports/reportinghub), I worked through GA4's standard report collections — **Acquisition, Engagement, Retention, Demographics, Tech, and Life Cycle (Generate leads)**: To get a full picture of who is visiting, where from, on what device, and what they do once they land.
 
 **4. Link the property to BigQuery**
 Under **Admin → Product Links → BigQuery Links**, I linked the GA4 property to a Google Cloud project so every event gets exported daily as a row in BigQuery, giving me raw access beyond what the GA4 UI can slice.
@@ -80,20 +78,20 @@ All reports below are for the **Last 28 days: Jul 2 – Jul 29, 2026**, scoped t
 
 | Report | What it shows |
 |---|---|
-| [Reports snapshot](assets/screenshots/01-reports-snapshot.png) | Top-line KPIs: users, sessions, engagement time, traffic sources |
-| [Traffic overview](assets/screenshots/02-traffic-overview.png) | Country/city breakdown, event counts, stickiness, language |
-| [Traffic acquisition — channel group](assets/screenshots/03-traffic-acquisition-channel-group.png) | Sessions by Direct / Paid Search / Organic Social / Cross-network / Paid Video |
-| [User acquisition — channel group](assets/screenshots/04-user-acquisition-channel-group.png) | New vs. returning users by first-touch channel |
-| [User acquisition — source/medium](assets/screenshots/05-user-acquisition-source-medium.png) | `google / cpc`, `(direct) / (none)`, `linkedin.com / referral` breakdown |
-| [Demographics — Country](assets/screenshots/06-demographics-country.png) | Active users, engagement rate, and event count by country |
-| [User attributes overview](assets/screenshots/07-user-attributes-overview.png) | Country, city, language (gender/age/interests not yet signalled) |
-| [Landing pages](assets/screenshots/08-landing-pages.png) | Sessions and engagement by entry page |
-| [Pages & screens](assets/screenshots/09-pages-and-screens.png) | Views and per-page engagement across the app |
-| [Tech overview](assets/screenshots/10-tech-overview.png) | Platform, OS, device category, screen resolution |
-| [Tech — Browser](assets/screenshots/11-tech-browser.png) | Engagement rate broken out by browser |
-| [Audiences](assets/screenshots/12-audiences.png) | `All Users` audience trend |
-| [Generate leads overview (Life Cycle)](assets/screenshots/13-generate-leads-overview.png) | Leads-focused view: new/returning users, key events, cohorts |
-| [Engagement & retention overview](assets/screenshots/14-engagement-retention-overview.png) | Retention/engagement by cohort, user stickiness |
+| [Reports snapshot](https://github.com/VimeshikaShri/Analytics/blob/main/01-reports-snapshot.png) | Top-line KPIs: users, sessions, engagement time, traffic sources |
+| [Traffic overview](https://github.com/VimeshikaShri/Analytics/blob/main/02-traffic-overview.png) | Country/city breakdown, event counts, stickiness, language |
+| [Traffic acquisition: Channel group](https://github.com/VimeshikaShri/Analytics/blob/main/Traffic_acquisition_Session_primary_channel_group_(Default_Channel_Group).pdf) | Sessions by Direct / Paid Search / Organic Social / Cross-network / Paid Video |
+| [User acquisition: Channel group](https://github.com/VimeshikaShri/Analytics/blob/main/User_acquisition_First_user_primary_channel_group_(Default_Channel_Group).pdf) | New vs. returning users by first-touch channel |
+| [User acquisition: Source/medium](https://github.com/VimeshikaShri/Analytics/blob/main/05-user-acquisition-source-medium.png) | `google / cpc`, `(direct) / (none)`, `linkedin.com / referral` breakdown |
+| [Demographics: Country](https://github.com/VimeshikaShri/Analytics/blob/main/Demographic_details_Country.pdf) | Active users, engagement rate, and event count by country |
+| [User attributes overview](https://github.com/VimeshikaShri/Analytics/blob/main/07-user-attributes-overview.png) | Country, city, language (gender/age/interests not yet signalled) |
+| [Landing pages](https://github.com/VimeshikaShri/Analytics/blob/main/08-landing-pages.png) | Sessions and engagement by entry page |
+| [Pages & screens](https://github.com/VimeshikaShri/Analytics/blob/main/09-pages-and-screens.png) | Views and per-page engagement across the app |
+| [Tech overview](https://github.com/VimeshikaShri/Analytics/blob/main/10-tech-overview.png) | Platform, OS, device category, screen resolution |
+| [Tech Browser](https://github.com/VimeshikaShri/Analytics/blob/main/11-tech-browser.png) | Engagement rate broken out by browser |
+| [Audiences](https://github.com/VimeshikaShri/Analytics/blob/main/12-audiences.png) | `All Users` audience trend |
+| [Generate leads overview (Life Cycle)](https://github.com/VimeshikaShri/Analytics/blob/main/13-generate-leads-overview.png) | Leads-focused view: new/returning users, key events, cohorts |
+| [Engagement & retention overview](https://github.com/VimeshikaShri/Analytics/blob/main/14-engagement-retention-overview.png) | Retention/engagement by cohort, user stickiness |
 
 ## Headline numbers (Jul 2 – Jul 29, 2026)
 
@@ -148,16 +146,13 @@ All reports below are for the **Last 28 days: Jul 2 – Jul 29, 2026**, scoped t
 | user_engagement | 18 |
 | form_start | 12 |
 
-## Insights & recommendations
+## Insights
 
-Reading across these reports side by side (rather than one dashboard in isolation) surfaced a few things worth acting on — this cross-report reasoning is the actual diagnostic step, not just the charts:
 
-- **No conversions are configured.** Every report shows `Key events: 0.00` and `Total revenue: ₹0.00`, even though 26 `Signups` events and 12 `form_start` events fired. The events are present — they're just not marked as **Key events** in GA4 Admin. This is a classic "the data exists, the config doesn't" bug: the fix is a config change (mark `Signups` as a key event), not a re-instrumentation.
-- **Safari is under-tracking engagement relative to Chrome.** Chrome active users show a 37.7% engagement rate; Safari active users (11, or ~19% of users) show only 9.1%, despite similar traffic volume. That gap is large enough to suspect a Safari-specific tagging/consent or ITP (Intelligent Tracking Prevention) issue rather than a genuine behavioral difference — worth a DebugView session on Safari specifically.
+- **Safari is under-tracking engagement relative to Chrome.** Chrome active users show a 37.7% engagement rate; Safari active users (11, or ~19% of users) show 9.1%, despite similar traffic volume. That gap is large enough to suspect a Safari-specific tagging/consent or ITP (Intelligent Tracking Prevention) issue rather than a genuine behavioral difference.
 - **Strong top-of-funnel, softer signup completion.** The homepage (`/`) drives 90% of sessions and 98% of new users, but only 23 views on `/signup` and 26 `Signups` events follow from 59 new users — signalling a homepage → signup drop-off worth funnel-exploring in GA4's Explore reports.
-- **Paid Search converts attention better than Direct.** Paid Search sessions show a 40.7% engagement rate vs. 32.4% for Direct, despite Direct carrying slightly more volume — the paid channel is currently the more efficient one on quality, not just quantity.
+- **Paid Search converts attention better than Direct.** Paid Search sessions show a 40.7% engagement rate vs. 32.4% for Direct, despite Direct carrying slightly more volume, the paid channel is currently the more efficient one on quality, not just quantity.
 - **Low return rate (3 of 59 users).** Retention-by-cohort peaks at ~4% and stickiness (DAU/MAU) sits at 6.9%, both consistent with a new/single-burst launch rather than an established retained base — expected at this stage, but the first metric I'd track post-launch.
-- **Traffic and users are concentrated in a short burst** (most of the last 28 days show ~0 activity followed by a spike near the end) rather than a steady drip — consistent with a single promotional push (LinkedIn, YouTube, Google Ads/CPC) rather than organic, ongoing discovery.
 
 ## BigQuery export
 
