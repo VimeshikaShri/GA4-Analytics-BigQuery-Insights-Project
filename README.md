@@ -1,4 +1,4 @@
-# GoDebug — GA4 Analytics & BigQuery Insights Project
+# GoDebug: GA4 Analytics & BigQuery Insights Project
 
 **Live app:** [go-debug-assets--vimeshika.replit.app](https://go-debug-assets--vimeshika.replit.app/)
 **Analytics tool:** Google Analytics 4 (GA4) → BigQuery Export → SQL analysis
@@ -6,7 +6,7 @@
 
 This repository documents an end-to-end web analytics implementation I built and ran on **GoDebug**, a web app I deployed on Replit. It covers everything from instrumenting the app with GA4, to configuring the BigQuery export, to querying the raw event data and turning it into product decisions.
 
-I'm publishing it as a working sample of the kind of analysis, debugging, and cross-functional communication expected in a **[Product Solution Engineer, Apps – gTech Ads Customer Experience](https://www.google.com/about/careers/applications/u/0/jobs/results/91302025064522438-product-solution-engineer-apps-gtech-ads-customer-experience-lcs)** role: reading product telemetry, spotting where tagging or funnels are broken, and translating data into a clear action plan.
+I am publishing it as a working sample of the kind of analysis, debugging, and cross-functional communication expected in a **[Product Solution Engineer, Apps – gTech Ads Customer Experience](https://www.google.com/about/careers/applications/u/0/jobs/results/91302025064522438-product-solution-engineer-apps-gtech-ads-customer-experience-lcs)** role: reading product telemetry, spotting where tagging or funnels are broken, and translating data into a clear action plan.
 
 ---
 
@@ -31,7 +31,7 @@ A big part of a Product Solutions Engineer's job is turning raw product/ads tele
 - Shipped a real web app (**GoDebug**) to Replit.
 - Instrumented it with **GA4** (Google's current analytics platform, the same measurement stack that underpins Google Ads conversion tracking).
 - Linked the property to **BigQuery** so I could go past the GA4 UI and query event-level data directly with SQL.
-- Used the data to find real issues in the product's funnel and tagging — the same debugging muscle the role calls for.
+- Used the data to find real issues in the product's funnel and tagging, the same debugging muscle the role calls for.
 
 ## Architecture
 
@@ -72,7 +72,7 @@ Under **Admin → Product Links → BigQuery Links**, I linked the GA4 property 
 Used standard SQL in BigQuery against the `events_*` tables to reproduce and cross-check what the GA4 UI reports were showing (see [BigQuery export](#bigquery-export) below), and to answer questions the UI can't (e.g., event-level joins, custom cohorts).
 
 **6. Turn findings into recommendations**
-Compiled the numbers into the [insights](#insights--recommendations) section below — the part of the workflow that matters most: not just "here's a chart" but "here's what's broken and here's the fix."
+Compiled the numbers into the [insights](#insights--recommendations) section below, the part of the workflow that matters most: not just "here's a chart" but "here's what's broken and here's the fix."
 
 ## GA4 reports built
 
@@ -261,9 +261,9 @@ SELECT
 
 ## Tools & skills demonstrated
 
-- **Google Analytics 4** — property/stream setup, DebugView validation, standard + custom reports across Acquisition, Engagement, Retention, Tech, and Life Cycle collections
-- **Google Cloud / BigQuery** — linking a GA4 property to BigQuery, querying the raw `events_*` export with SQL
-- **Debugging & root-cause analysis** — spotting a missing Key-event configuration, a Safari-specific engagement gap, and a homepage→signup drop-off by cross-referencing multiple reports rather than reading one in isolation
+- **Google Analytics 4**: Property/stream setup, DebugView validation, standard + custom reports across Acquisition, Engagement, Retention, Tech, and Life Cycle collections
+- **Google Cloud / BigQuery**: Linking a GA4 property to BigQuery, querying the raw `events_*` export with SQL
+- **Debugging & root-cause analysis**: Spotting a missing Key-event configuration, a Safari-specific engagement gap, and a homepage→signup drop-off by cross-referencing multiple reports rather than reading one in isolation
 - **Communicating data to a non-technical audience** — translating raw metrics into a short list of concrete, actionable recommendations
 
 ---
