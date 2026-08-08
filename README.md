@@ -261,6 +261,10 @@ SELECT
 - **Debugging & root-cause analysis**: Spotting a missing Key-event configuration, a Safari-specific engagement gap, and a homepage→signup drop-off by cross-referencing multiple reports rather than reading one in isolation
 - **Communicating data to a non-technical audience** — translating raw metrics into a short list of concrete, actionable recommendations
 
+## Author
+
+**<small>Vimeshika Shri : GitHub: [@VimeshikaShri](https://github.com/VimeshikaShri)</small>**
+
 ---
 
 *This project is a self-directed case study built to demonstrate analytics instrumentation, SQL/BigQuery fluency, and product-debugging thinking relevant to Google's gTech Ads Customer Experience team.*
